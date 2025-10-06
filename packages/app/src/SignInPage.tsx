@@ -35,7 +35,7 @@ export function SignInPage(): JSX.Element {
       projectId={searchParams.get('project') || undefined}
     >
       <Logo size={32} />
-      <Title>Sign in to Medplum</Title>
+      <Title>Sign in to Afiax EHR</Title>
       {searchParams.get('project') === 'new' && <div>Sign in again to create a new project</div>}
     </SignInForm>
   );

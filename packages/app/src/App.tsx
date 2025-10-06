@@ -96,7 +96,7 @@ function getIcon(to: string): JSX.Element | undefined {
     return <IconDatabase />;
   }
   try {
-    const resourceType = new URL(to, 'https://app.medplum.com').pathname.split('/')[1];
+    const resourceType = new URL(to, 'https://ehr.afiax.africa').pathname.split('/')[1];
     if (resourceType in resourceTypeToIcon) {
       const Icon = resourceTypeToIcon[resourceType];
       return <Icon />;

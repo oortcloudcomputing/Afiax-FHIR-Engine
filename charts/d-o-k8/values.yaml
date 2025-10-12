@@ -1,0 +1,86 @@
+namespace: medplum
+
+backend:
+  replicaCount: 2
+  image:
+    repository: mattwamoto/afiax-fhir
+    tag: latest
+  env:
+    # Do not put secrets here, use secrets.yaml for passwords!
+    - name: MEDPLUM_PORT
+      value: "8103"
+    - name: MEDPLUM_BASE_URL
+      value: "https://fhir.afiax.africa/"
+    - name: MEDPLUM_APP_BASE_URL
+      value: "https://ehr.afiax.africa/"
+    - name: MEDPLUM_STORAGE_BASE_URL
+      value: "https://fhir.afiax.africa/storage/"
+    - name: MEDPLUM_DATABASE_HOST
+      value: "afiax-do-user-24984234-0.f.db.ondigitalocean.com"
+    - name: MEDPLUM_DATABASE_PORT
+      value: "25060"
+    - name: MEDPLUM_DATABASE_DBNAME
+      value: "medplum"
+    - name: MEDPLUM_DATABASE_USERNAME
+      value: "medplum"
+    - name: MEDPLUM_REDIS_HOST
+      value: "redis-do-user-24984234-0.f.db.ondigitalocean.com"
+    - name: MEDPLUM_REDIS_PORT
+      value: "25061"
+    - name: MEDPLUM_SUPPORT_EMAIL
+      value: '"Support" <support@afiax.africa>'
+    - name: MEDPLUM_ALLOWED_ORIGINS
+      value: "https://ehr.afiax.africa"
+    - name: MEDPLUM_INTROSPECTION_ENABLED
+      value: "false"
+    # Add more as needed
+
+  resources:
+    requests:
+      memory: "1Gi"
+      cpu: "500m"
+    limits:
+      memory: "2Gi"
+      cpu: "1500m"
+
+  service:
+    type: ClusterIP
+    port: 80
+    targetPort: 8103
+
+  ingress:
+    enabled: true
+    domain: "fhir.afiax.africa"
+    className: nginx
+    tlsSecretName: letsencrypt-nginx-tls
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-nginx"
+
+frontend:
+  enabled: true
+  replicaCount: 2
+  image:
+    repository: mattwamoto/afiax-ehr
+    tag: latest
+  env:
+    - name: MEDPLUM_BASE_URL
+      value: "https://fhir.afiax.africa/"
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  service:
+    type: ClusterIP
+    port: 3000
+  ingress:
+    enabled: true
+    domain: "ehr.afiax.africa"
+    className: nginx
+    tlsSecretName: letsencrypt-nginx-tls
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      cert-manager.io/cluster-issuer: "letsencrypt-nginx"

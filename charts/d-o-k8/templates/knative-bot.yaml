@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: medplum-bot-hello
+  namespace: medplum
+spec:
+  template:
+    spec:
+      containers:
+        - image: ghcr.io/your-org/medplum-bot-hello:latest
+          env:
+            - name: MEDPLUM_BASE_URL
+              value: "https://fhir.afiax.africa/"

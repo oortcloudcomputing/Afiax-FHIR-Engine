@@ -1,0 +1,26 @@
+{{- if and .Values.frontend.enabled .Values.frontend.ingress.enabled .Values.frontend.ingress.domain }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: medplum-frontend
+  namespace: {{ .Values.namespace }}
+  annotations:
+    {{- toYaml .Values.frontend.ingress.annotations | nindent 4 }}
+spec:
+  ingressClassName: {{ .Values.frontend.ingress.className }}
+  tls:
+    - hosts:
+        - {{ .Values.frontend.ingress.domain }}
+      secretName: {{ .Values.frontend.ingress.tlsSecretName }}
+  rules:
+    - host: {{ .Values.frontend.ingress.domain }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: medplum-frontend
+                port:
+                  number: {{ .Values.frontend.service.port }}
+{{- end }}

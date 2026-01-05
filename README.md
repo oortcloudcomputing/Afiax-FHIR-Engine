@@ -25,7 +25,7 @@ Afiax is a developer platform that enables flexible and rapid development of hea
 **We heartily welcome any and all contributions that match our engineering standards!**
 
 That being said, this codebase isn't your typical open-source project because it's not a library or package with a
-limited scope -- it's our entire product. Our [Contributing documentation](https://Afiax.com/docs/contributing) has
+limited scope -- it's our entire product. Our [Contributing documentation](https://Afiax.africa/docs/contributing) has
 all the information you need to get started.
 
 ### Ground Rules
@@ -49,10 +49,10 @@ place to share with us. ([click here to open a new issue](https://github.com/Afi
 Did you learn how to do something using Afiax that wasn't obvious on your first try? By contributing your new knowledge
 to our documentation, you can help others who might have a similar use case!
 
-Our documentation is hosted on [Afiax.com/docs](https://afiax.africa/docs), but it is built from [Markdown](https://www.markdownguide.org/)
-files in our [`docs` package](https://github.com/Afiax/Afiax/tree/main/packages/docs/docs).
+Our documentation is hosted on [Afiax.africa/docs](https://afiax.africa/docs), but it is built from [Markdown](https://www.markdownguide.org/)
+files in our [`docs` package](https://github.com/mattwamoto/Afiax/tree/main/packages/docs/docs).
 
-For relatively small changes, you can edit files directly from your web browser on [Github.dev](https://github.dev/Afiax/Afiax/blob/main/packages/docs/docs/home.md)
+For relatively small changes, you can edit files directly from your web browser on [Github.dev](https://github.dev/mattwamoto/Afiax/blob/main/packages/docs/docs/home.md)
 without needing to clone the repository.
 
 #### Fixing a bug or implementing a new feature

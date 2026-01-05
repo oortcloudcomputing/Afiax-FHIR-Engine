@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Local development setup
 
-Ready to get started developing Medplum on your local machine? Great! First, you'll need to set up your own copy of the
+Ready to get started developing Afiax FHIR ENGINE on your local machine? Great! First, you'll need to set up your own copy of the
 [Medplum repository](http://github.com/medplum/medplum) to work on, by [forking the repository](https://docs.github.com/en/get-started/quickstart/fork-a-repo)
 into your own GitHub account. **Note:** If you don't want to make changes and submit them back to the Medplum project,
 you can skip this step and proceed directly to the next step.
